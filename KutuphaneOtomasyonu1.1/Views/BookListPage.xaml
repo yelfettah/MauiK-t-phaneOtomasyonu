@@ -1,0 +1,84 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KutuphaneOtomasyonu.Views.BookListPage"
+             Title="Kitap Listesi"
+             BackgroundColor="#f0f4f8">
+
+    <Grid RowDefinitions="Auto,*" Padding="10">
+
+
+        <VerticalStackLayout Padding="20" Spacing="12" BackgroundColor="#1976D2">
+            <Label Text="📚 Kitap Listesi" FontSize="28" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+            <Label x:Name="WelcomeLabel" FontSize="18" FontAttributes="Italic" TextColor="White" HorizontalOptions="Center" />
+
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Entry x:Name="SearchEntry" Placeholder="Kitap ara..." WidthRequest="180" BackgroundColor="White" TextColor="Black"/>
+                <Button Text="Ara" Clicked="OnSearchClicked" BackgroundColor="#1565C0" TextColor="White"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Spacing="20" Padding="10">
+
+              
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Button Text="📥 Kitap Ekle" Clicked="OnAddBookClicked" BackgroundColor="#4CAF50" TextColor="White" CornerRadius="10" />
+                    <Button Text="🗂 Eklediklerim" Clicked="OnMyBooksClicked" BackgroundColor="#03A9F4" TextColor="White" CornerRadius="10"/>
+                    <Button Text="📖 Ödünç Aldıklarım" Clicked="OnBorrowedBooksClicked" BackgroundColor="#FF9800" TextColor="White" CornerRadius="10"/>
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Button Text="🔑 Şifre Değiştir" Clicked="OnChangePasswordClicked" BackgroundColor="#607D8B" TextColor="White" CornerRadius="10"/>
+                    <Button Text="🚪 Çıkış Yap" Clicked="OnLogoutClicked" BackgroundColor="#B71C1C" TextColor="White" CornerRadius="10"/>
+                </HorizontalStackLayout>
+
+           
+                <Frame BackgroundColor="#E3F2FD" Padding="15" CornerRadius="12" Margin="0,10,0,0">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="📅 Yayın Yılına Göre Filtrele" FontSize="16" FontAttributes="Bold" TextColor="#0D47A1"/>
+                        <HorizontalStackLayout Spacing="10">
+                            <Entry x:Name="YearEntry" Placeholder="örnek: 2025" Keyboard="Numeric" WidthRequest="100" BackgroundColor="White" TextColor="Black"/>
+                            <Button Text="Filtrele" Clicked="OnFilterByYearClicked" BackgroundColor="#2196F3" TextColor="White" CornerRadius="10"/>
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Frame>
+
+                
+                <CollectionView x:Name="BooksCollectionView">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="White" CornerRadius="16" Margin="5" Padding="15" HasShadow="True">
+                                <VerticalStackLayout Spacing="5">
+                                    <Label Text="{Binding Title}" FontSize="20" FontAttributes="Bold" TextColor="#0D47A1"/>
+                                    <Label Text="{Binding Author, StringFormat='✍️ {0}'}" TextColor="#333"/>
+                                    <Label Text="{Binding PublishedYear, StringFormat='📆 {0}'}" TextColor="#333"/>
+                                    <Label Text="{Binding CreatedDate, StringFormat='📅 Ekleme Tarihi: {0:dd.MM.yyyy}'}" FontSize="12" TextColor="#666"/>
+                                    <Label Text="{Binding UpdatedBy, StringFormat='🛠 Güncelleyen: {0}'}" FontSize="12" TextColor="#666" IsVisible="{Binding UpdatedBy, Converter={StaticResource NullToBoolConverter}}"/>
+                                    <Label Text="{Binding UpdatedDate, StringFormat='📅 Güncelleme: {0:dd.MM.yyyy HH:mm}'}" FontSize="12" TextColor="#666" IsVisible="{Binding UpdatedDate, Converter={StaticResource NullToBoolConverter}}"/>
+                                    <HorizontalStackLayout Spacing="8" Margin="0,10,0,0" HorizontalOptions="End">
+                                        <Button Text="📥 Ödünç Al"
+                                                Clicked="OnBorrowClicked"
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="#388E3C"
+                                                TextColor="White"
+                                                CornerRadius="10"
+                                                IsEnabled="{Binding IsAvailable}" />
+                                        <Button Text="📤 İade Et"
+                                                Clicked="OnReturnClicked"
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="#FFC107"
+                                                TextColor="Black"
+                                                CornerRadius="10"
+                                                IsVisible="{Binding IsBorrowedByCurrentUser}" />
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

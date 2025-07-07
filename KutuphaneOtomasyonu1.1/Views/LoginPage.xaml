@@ -1,0 +1,62 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KutuphaneOtomasyonu.Views.LoginPage"
+             Title="Giriş Yap"
+             BackgroundColor="#F5F6FA">
+
+    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+
+        <Label Text="📚 Kütüphane Otomasyonu"
+               FontSize="28"
+               FontAttributes="Bold"
+               TextColor="#2C3E50"
+               HorizontalOptions="Center" />
+
+        <Frame BackgroundColor="White"
+               CornerRadius="16"
+               Padding="25"
+               HasShadow="True"
+               BorderColor="#DADADA">
+
+            <VerticalStackLayout Spacing="15">
+
+                <Entry x:Name="usernameEntry"
+                       Placeholder="👤 Kullanıcı Adı"
+                       BackgroundColor="#ECF0F1"
+                       TextColor="#2C3E50"
+                       PlaceholderColor="#95A5A6"
+                       HeightRequest="45"/>
+
+                <Entry x:Name="passwordEntry"
+                       Placeholder="🔒 Şifre"
+                       IsPassword="True"
+                       BackgroundColor="#ECF0F1"
+                       TextColor="#2C3E50"
+                       PlaceholderColor="#95A5A6"
+                       HeightRequest="45"/>
+
+                <Button
+                    x:Name="loginButton"
+                     Text="➡️ Giriş Yap"
+                        Clicked="OnLoginClicked"
+                        BackgroundColor="#27AE60"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="8"
+                        HeightRequest="45"/>
+
+                <Button
+                    x:Name="registerButton"
+                     Text="📝 Kayıt Ol"
+                        Clicked="OnRegisterButtonClicked"
+                        BackgroundColor="#2980B9"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        CornerRadius="8"
+                        HeightRequest="45"/>
+            </VerticalStackLayout>
+
+        </Frame>
+
+    </VerticalStackLayout>
+</ContentPage>

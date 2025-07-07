@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="KutuphaneOtomasyonu.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:KutuphaneOtomasyonu"
+    xmlns:views="clr-namespace:KutuphaneOtomasyonu.Views"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Kutuphane Otomasyonu">
+
+    <ShellContent
+        Title="Giriş"
+        ContentTemplate="{DataTemplate views:LoginPage}"
+        Route="LoginPage" />
+
+    <ShellContent
+        Title="Kitap Listesi"
+        ContentTemplate="{DataTemplate views:BookListPage}"
+        Route="BookListPage" />
+
+    <ShellContent
+        Title="Kitap Ekle"
+        ContentTemplate="{DataTemplate views:AddBookPage}"
+        Route="AddBookPage" />
+
+</Shell>

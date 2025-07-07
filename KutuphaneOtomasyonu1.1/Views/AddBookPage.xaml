@@ -1,0 +1,36 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KutuphaneOtomasyonu.Views.AddBookPage"
+             Title="Kitap Ekle"
+             BackgroundColor="#f0f4f8">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24" Spacing="20" VerticalOptions="Center">
+            <Frame BackgroundColor="#1976D2" CornerRadius="18" Padding="18" HasShadow="True" Margin="0,30,0,0">
+                <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Image Source="book_add.png" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center"/>
+                    <Label Text="Yeni Kitap Ekle" FontSize="28" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+                    <Label Text="Lütfen kitap bilgilerini eksiksiz doldurun." FontSize="14" TextColor="#BBDEFB" HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame BackgroundColor="White" CornerRadius="16" Padding="20" HasShadow="True">
+                <VerticalStackLayout Spacing="18">
+                    <Entry x:Name="titleEntry" Placeholder="Kitap Adı" BackgroundColor="#E3F2FD" TextColor="#0D47A1" FontSize="18"/>
+                    <Entry x:Name="authorEntry" Placeholder="Yazar" BackgroundColor="#E3F2FD" TextColor="#0D47A1" FontSize="18"/>
+                    <Entry x:Name="isbnEntry" Placeholder="ISBN" BackgroundColor="#E3F2FD" TextColor="#0D47A1" FontSize="18"/>
+                    <Entry x:Name="yearEntry" Placeholder="Basım Yılı" Keyboard="Numeric" BackgroundColor="#E3F2FD" TextColor="#0D47A1" FontSize="18"/>
+
+                    <Button Text="Kitabı Ekle"
+                            Clicked="OnAddBookClicked"
+                            BackgroundColor="#1976D2"
+                            TextColor="White"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="50"
+                            FontSize="20"/>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

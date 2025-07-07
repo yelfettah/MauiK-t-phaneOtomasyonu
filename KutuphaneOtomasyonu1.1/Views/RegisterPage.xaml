@@ -1,0 +1,65 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=netstandard"
+             x:Class="KutuphaneOtomasyonu.Views.RegisterPage"
+             Title="Kayıt Ol"
+             BackgroundColor="#F4F4F4">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" WidthRequest="350" HorizontalOptions="Center" VerticalOptions="StartAndExpand">
+
+            <Label Text="Yeni Hesap Oluştur" FontSize="26" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#333" />
+
+            <!-- Kullanıcı Adı -->
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" HeightRequest="50" HasShadow="True">
+                <Entry x:Name="usernameEntry" Placeholder="Kullanıcı Adı" FontSize="16" TextColor="Black" />
+            </Frame>
+
+            <!-- Şifre -->
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" HeightRequest="50" HasShadow="True">
+                <Entry x:Name="passwordEntry" Placeholder="Şifre" IsPassword="True" FontSize="16" TextColor="Black" />
+            </Frame>
+
+        
+            <Frame BackgroundColor="White" CornerRadius="10" Padding="10" HeightRequest="50" HasShadow="True">
+                <Entry x:Name="confirmPasswordEntry" Placeholder="Şifre (Tekrar)" IsPassword="True" FontSize="16" TextColor="Black" />
+            </Frame>
+
+            <Label Text="Cinsiyetinizi Seçin:" FontAttributes="Bold" TextColor="Black" />
+            <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+                <RadioButton x:Name="femaleRadio" Content="Kadın" GroupName="Gender" TextColor="Black"/>
+                <RadioButton x:Name="maleRadio" Content="Erkek" GroupName="Gender" TextColor="Black"/>
+                <RadioButton x:Name="noneRadio" Content="Belirtmek istemiyorum" GroupName="Gender" TextColor="Black"/>
+            </HorizontalStackLayout>
+            <Label Text="Kullanıcı Türü:" FontAttributes="Bold" TextColor="Black"/>
+
+<Picker x:Name="userTypePicker" Title="Tür Seçin" TextColor="Black">
+    <Picker.ItemsSource>
+        <x:Array Type="{x:Type x:String}">
+            <x:String>Öğrenci</x:String>
+            <x:String>Personel</x:String>
+            <x:String>Misafir</x:String>
+        </x:Array>
+    </Picker.ItemsSource>
+</Picker>
+
+          
+            <Label Text="Doğum Tarihiniz:" FontAttributes="Bold" TextColor="Black"/>
+            <DatePicker x:Name="birthDatePicker" MaximumDate="{x:Static sys:DateTime.Today}" Format="dd.MM.yyyy" TextColor="Black" />
+
+            <HorizontalStackLayout>
+                <CheckBox x:Name="termsCheckBox" VerticalOptions="Center" />
+                <Label Text="Kullanım şartlarını kabul ediyorum." VerticalOptions="Center" TextColor="Black" />
+            </HorizontalStackLayout>
+
+            <Button Text="✔ Kayıt Ol"
+                    Clicked="OnRegisterClicked"
+                    BackgroundColor="#27AE60"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    CornerRadius="10"
+                    HeightRequest="50" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

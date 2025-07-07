@@ -1,0 +1,64 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KutuphaneOtomasyonu.Views.BorrowedBooksPage"
+             Title="📚 Ödünç Aldığım Kitaplar">
+
+    <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="#F4F4F4">
+        
+        <Label Text="📖 Ödünç Aldığınız Kitaplar" 
+               FontSize="24" 
+               FontAttributes="Bold" 
+               TextColor="#2C3E50"
+               HorizontalOptions="Center" />
+
+        <CollectionView x:Name="BorrowedBooksCollectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="15"
+                           Margin="10"
+                           CornerRadius="12"
+                           BackgroundColor="White"
+                           HasShadow="True"
+                           BorderColor="#D1D1D1">
+                        
+                        <VerticalStackLayout Spacing="5">
+
+                            <Label Text="📘 Kitap Adı:" 
+                                   FontSize="14"
+                                   TextColor="#7F8C8D"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding BookTitle}" 
+                                   FontSize="18" 
+                                   FontAttributes="Bold"
+                                   TextColor="#34495E" />
+
+                            <Label Text="✍️ Yazar:" 
+                                   FontSize="14"
+                                   TextColor="#7F8C8D"
+                                   FontAttributes="Bold"/>
+                            <Label Text="{Binding BookAuthor}" 
+                                   FontSize="16" 
+                                   TextColor="#2C3E50" />
+
+                            <Label Text="{Binding BorrowDate, StringFormat='📅 Ödünç Tarihi: {0:dd.MM.yyyy}'}" 
+                                   FontSize="14" 
+                                   TextColor="#6C7A89" />
+
+                            <Button Text="📤 İade Et"
+                                    Clicked="OnReturnBookClicked"
+                                    CommandParameter="{Binding .}"
+                                    IsVisible="{Binding IsBorrowedByCurrentUser}"
+                                    BackgroundColor="#E74C3C"
+                                    TextColor="White"
+                                    CornerRadius="8"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="End"
+                                    Padding="10,5"/>
+
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

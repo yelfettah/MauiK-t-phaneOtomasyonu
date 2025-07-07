@@ -1,0 +1,16 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KutuphaneOtomasyonu.Views.UpdateBookPage"
+             Title="Kitap Güncelle">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Entry x:Name="titleEntry" Placeholder="Kitap Adı" />
+        <Entry x:Name="authorEntry" Placeholder="Yazar" />
+        <Entry x:Name="isbnEntry" Placeholder="ISBN" />
+        <Entry x:Name="yearEntry" Placeholder="Yayın Yılı" Keyboard="Numeric" />
+
+        <Button Text="Kaydet" Clicked="OnSaveClicked" />
+    </VerticalStackLayout>
+
+</ContentPage>
+
